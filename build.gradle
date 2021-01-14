@@ -1,0 +1,29 @@
+plugins {
+    id 'java'
+    id 'maven-publish'
+}
+
+group 'by.squadster'
+version '1.0'
+
+repositories {
+    mavenCentral()
+}
+
+dependencies {
+    compileOnly 'org.projectlombok:lombok:1.18.16'
+    annotationProcessor 'org.projectlombok:lombok:1.18.16'
+}
+
+publishing {
+    repositories {
+        maven {
+            name = "GitHubPackages"
+            url = "https://maven.pkg.github.com/squadster/squadster-models"
+            credentials {
+                username = System.getenv("GITHUB_USER")
+                password = System.getenv("GITHUB_TOKEN")
+            }
+        }
+    }
+}
