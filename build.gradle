@@ -26,4 +26,12 @@ publishing {
             }
         }
     }
+    publications {
+        register("jar", MavenPublication) {
+            from(components["java"])
+            pom {
+                url.set("https://github.com/squadster/squadster-models.git")
+            }
+        }
+    }
 }
